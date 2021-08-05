@@ -5,9 +5,12 @@ class Counter extends Component {
     console.log("prevPros", prevPros);
     console.log("prevState", prevState);
     if (prevPros.counter.value !== this.props.counter.value) {
-      // Do an Ajax call and get new date from the server
-      // console.log("we can deside weither we shoul make Ajax call to get data base on changese in prop and state object");
+      console.log("Do an Ajax call and get new date from the server");
+      // we can deside weither we shoul make Ajax call to get data base on changese in prop and state object
     }
+  }
+  componentWillUnmount() {
+    console.log("Counter  - Unmount");
   }
 
   render() {
