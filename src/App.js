@@ -13,6 +13,18 @@ class App extends Component {
     ],
   };
 
+  constructor (props) {
+    super(props);
+    console.log('App - Constructor');
+    // this.state = this.props.something // never this.setState()
+    // console.log('App - constructor', this.props);
+  }
+
+  componentDidMount(){
+    // Ajax call to get data from the server eg: this.setState({ movies })
+    console.log('App - Mounted');
+  }
+
   handleReset = () => {
     const setCounter = this.state.counters.map((c) => {
       c.value = 0;
@@ -20,7 +32,6 @@ class App extends Component {
     });
     this.setState({ counters: setCounter });
   };
-
   
   handleIncrement = (count) => {
     const counters = [...this.state.counters];
@@ -42,6 +53,8 @@ class App extends Component {
   };
   
   render() { 
+    console.log('App - Rendered');
+
     return ( 
       <React.Fragment>
         <Navbar 
