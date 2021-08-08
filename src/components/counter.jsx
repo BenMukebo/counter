@@ -17,32 +17,43 @@ class Counter extends Component {
     console.log("Counter - Rendered");
 
     return (
-      <div>
+      <div className='row'>
         {/* {this.props.children} */}
         {/* <h4>{this.props.id}</h4> */}
+        <div className="col-1">
+          <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        </div>
 
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
+        <div className="col">
+          <button
+            // onClick={this.props.onIncrement}
+            onClick={() => this.props.onIncrement(this.props.counter)}
+            className="btn btn-secondary btn-sm">
+            +
+          </button>
 
-        <button
-          // onClick={this.props.onIncrement}
-          onClick={() => this.props.onIncrement(this.props.counter)}
-          className="btn btn-secondary btn-sm">
-          Increment
-        </button>
+          <button
+            onClick={() => this.props.onDecrement(this.props.counter)}
+            className="btn btn-secondary btn-sm mx-2 "
+            disabled = {this.props.counter.value === 0 ? 'disabled': ''}>
+            -
+          </button>
 
-        <button
-          // onClick={this.props.onDelete}
-          onClick={() => this.props.onDelete(this.props.counter.id)} // onDelete(this.props)
-          className="btn btn-danger btn-sm m-2">
-          Delete
-        </button>
+          <button
+            // onClick={this.props.onDelete}
+            onClick={() => this.props.onDelete(this.props.counter.id)} // onDelete(this.props)
+            className="btn btn-danger btn-sm">
+            Delete
+          </button>
+        </div>
       </div>
     );
   }
 
   getBadgeClasses() {
     let classesName = "badge m-2 badge-";
-    classesName += this.props.counter.value === 0 ? "warning" : "primary";
+    classesName +=
+      this.props.counter.value === 0 ? "warning" : "primary";
     return classesName;
   }
 
